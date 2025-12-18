@@ -1,0 +1,27 @@
+/* Typography Utilities */
+.activity-label {
+    font-size: var(--font-size-large);
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+}
+
+.placeholder-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.activity-context {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Utils */
+.hidden {
+    display: none !important;
+}
