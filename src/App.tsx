@@ -33,12 +33,14 @@ export default function App() {
 	return (
 		<main className="app-container">
 			<DynamicBackground now={now} />
-			<ProgressLine progress={schedule.progress} />
+			<ProgressLine key="progress-line" progress={schedule.progress} />
 			<AnimatePresence>
-				{showIntro && <IntroOverlay onDismiss={handleDismissIntro} />}
+				{showIntro && (
+					<IntroOverlay key="intro-overlay" onDismiss={handleDismissIntro} />
+				)}
 			</AnimatePresence>
 
-			<ActivityDisplay activity={schedule} />
+			<ActivityDisplay key={schedule.label} activity={schedule} />
 
 			<motion.button
 				type="button"

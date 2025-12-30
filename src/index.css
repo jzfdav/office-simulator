@@ -38,7 +38,7 @@ html {
 	align-items: center;
 	padding: 2rem;
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 }
 
 /* Dynamic Background */
@@ -79,14 +79,15 @@ html {
 }
 
 .bg-overlay {
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	background: radial-gradient(
 		circle at center,
 		transparent 0%,
-		rgba(0, 0, 0, 0.4) 100%
+		rgba(0, 0, 0, 0.5) 100%
 	);
 	z-index: 1;
+	pointer-events: none;
 }
 
 .activity-container {
@@ -94,18 +95,20 @@ html {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	z-index: 20;
 }
 
 .activity-label {
 	font-size: 3rem;
 	font-weight: 500;
-	letter-spacing: -0.05em;
+	letter-spacing: -0.01em;
 	margin-bottom: 0.5rem;
+	color: #fff;
 }
 
 .activity-context {
 	font-size: 1.25rem;
-	color: var(--text-dim);
+	color: rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 	font-weight: 400;
