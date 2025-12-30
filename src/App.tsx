@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Settings as SettingsIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import ActivityDisplay from "./components/ActivityDisplay";
+import DynamicBackground from "./components/DynamicBackground";
 import IntroOverlay from "./components/IntroOverlay";
 import SettingsModal from "./components/SettingsModal";
 import { getSchedule } from "./logic/scheduler";
@@ -30,6 +31,7 @@ export default function App() {
 
 	return (
 		<main className="app-container">
+			<DynamicBackground now={now} />
 			<AnimatePresence>
 				{showIntro && <IntroOverlay onDismiss={handleDismissIntro} />}
 			</AnimatePresence>
