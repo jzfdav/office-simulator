@@ -270,12 +270,58 @@ html {
 	opacity: 0.6;
 }
 
-.credits-text {
-	font-size: 0.7rem;
-	color: var(--text);
+/* Wheel Picker */
+.wheel-picker-container {
+	cursor: grab;
+	user-select: none;
+	touch-action: none;
+}
+
+.wheel-picker-container:active {
+	cursor: grabbing;
+}
+
+.wheel-picker-item {
+	font-size: 1.5rem;
+	font-weight: 300;
 	font-family: monospace;
-	letter-spacing: 0.05em;
-	line-height: 1.6;
+}
+
+/* Segmented Control */
+.segmented-control {
+	display: flex;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 2px;
+	border-radius: 8px;
+	position: relative;
+	width: 100%;
+}
+
+.segmented-option {
+	flex: 1;
+	z-index: 1;
+	cursor: pointer;
+	text-align: center;
+	font-size: 0.75rem;
+	font-weight: 500;
+	padding: 6px 0;
+	color: var(--text-dim);
+	transition: color 0.3s;
+}
+
+.segmented-option.active {
+	color: var(--text);
+}
+
+.segmented-slider {
+	position: absolute;
+	top: 2px;
+	bottom: 2px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 6px;
+	transition:
+		left 0.3s,
+		width 0.3s;
 }
 
 /* Intro Overlay */

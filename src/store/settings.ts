@@ -12,12 +12,14 @@ export interface Settings {
 	workdayStart: number; // Hour (0-23)
 	workdayEnd: number; // Hour (0-23)
 	hasSeenIntro: boolean;
+	timeFormat: "12h" | "24h";
 }
 
 const DEFAULT_SETTINGS: Settings = {
 	workdayStart: 9,
 	workdayEnd: 17,
 	hasSeenIntro: false,
+	timeFormat: "24h",
 };
 
 export const SettingsStore = {

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 import { useState } from "react";
 import { type Settings, SettingsStore } from "../store/settings";
+import WheelPicker from "./WheelPicker";
 
 interface Props {
 	isOpen: boolean;
@@ -18,14 +19,25 @@ export default function SettingsModal({
 }: Props) {
 	const [start, setStart] = useState(currentSettings.workdayStart);
 	const [end, setEnd] = useState(currentSettings.workdayEnd);
+	const [format, setFormat] = useState(currentSettings.timeFormat);
 
 	const handleSave = () => {
 		const updated = SettingsStore.save({
 			workdayStart: start,
 			workdayEnd: end,
+			timeFormat: format,
 		});
 		onUpdate(updated);
 		onClose();
+	};
+
+	const hours = Array.from({ length: 24 }, (_, i) => i);
+
+	const formatHour = (h: number) => {
+		if (format === "24h") return h.toString().padStart(2, "0");
+		const suffix = h >= 12 ? "PM" : "AM";
+		const hour12 = h % 12 || 12;
+		return `${hour12} ${suffix}`;
 	};
 
 	return (
@@ -51,40 +63,73 @@ export default function SettingsModal({
 						}}
 					>
 						<div className="modal-header">
-							<h2>Workday Window</h2>
+							<h2>Preferences</h2>
 							<button type="button" onClick={onClose} className="icon-btn">
 								<X size={20} strokeWidth={1.5} />
 							</button>
 						</div>
 
 						<div className="modal-body">
-							<div className="input-group">
-								<span className="input-label">Start Time</span>
-								<div className="time-input-container">
-									<input
-										type="number"
-										min="0"
-										max="23"
-										className="premium-input"
-										value={start}
-										onChange={(e) => setStart(Number(e.target.value))}
-									/>
-									<span className="input-suffix">:00</span>
-								</div>
+							<div className="segmented-control">
+								<button
+									type="button"
+									aria-pressed={format === "24h"}
+									className={`segmented-option ${format === "24h" ? "active" : ""}`}
+									onClick={() => setFormat("24h")}
+								>
+									24-HOUR
+								</button>
+								<button
+									type="button"
+									aria-pressed={format === "12h"}
+									className={`segmented-option ${format === "12h" ? "active" : ""}`}
+									onClick={() => setFormat("12h")}
+								>
+									12-HOUR
+								</button>
+								<div
+									className="segmented-slider"
+									style={{
+										left: format === "24h" ? "2px" : "calc(50% - 1px)",
+										width: "50%",
+									}}
+								/>
 							</div>
 
-							<div className="input-group">
-								<span className="input-label">End Time</span>
-								<div className="time-input-container">
-									<input
-										type="number"
-										min="0"
-										max="23"
-										className="premium-input"
-										value={end}
-										onChange={(e) => setEnd(Number(e.target.value))}
+							<div
+								style={{
+									display: "flex",
+									gap: "1rem",
+									justifyContent: "space-between",
+								}}
+							>
+								<div style={{ flex: 1, textAlign: "center" }}>
+									<span
+										className="input-label"
+										style={{ marginBottom: "1rem", display: "block" }}
+									>
+										Start
+									</span>
+									<WheelPicker
+										value={start}
+										options={hours}
+										onChange={setStart}
+										format={formatHour}
 									/>
-									<span className="input-suffix">:00</span>
+								</div>
+								<div style={{ flex: 1, textAlign: "center" }}>
+									<span
+										className="input-label"
+										style={{ marginBottom: "1rem", display: "block" }}
+									>
+										End
+									</span>
+									<WheelPicker
+										value={end}
+										options={hours}
+										onChange={setEnd}
+										format={formatHour}
+									/>
 								</div>
 							</div>
 						</div>

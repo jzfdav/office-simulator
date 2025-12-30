@@ -23,7 +23,7 @@ test('Settings Modal', async ({ page }) => {
 
     // Open Settings
     await page.click('.settings-trigger');
-    await expect(page.locator('text=Workday Window')).toBeVisible();
+    await expect(page.locator('text=Preferences')).toBeVisible();
 
     // Close Settings
     await page.click('button:has-text("Save")');
