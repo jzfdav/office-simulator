@@ -14,6 +14,16 @@
 	padding: 0;
 }
 
+button {
+	background: none;
+	border: none;
+	font: inherit;
+	color: inherit;
+	cursor: pointer;
+	padding: 0;
+	outline: none;
+}
+
 body,
 html {
 	height: 100%;
@@ -412,11 +422,13 @@ html {
 /* Segmented Control */
 .segmented-control {
 	display: flex;
-	background: rgba(255, 255, 255, 0.05);
-	padding: 2px;
-	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.03);
+	padding: 3px;
+	border-radius: 12px;
 	position: relative;
 	width: 100%;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	margin-bottom: 2rem;
 }
 
 .segmented-option {
@@ -424,26 +436,26 @@ html {
 	z-index: 1;
 	cursor: pointer;
 	text-align: center;
-	font-size: 0.75rem;
-	font-weight: 500;
-	padding: 6px 0;
+	font-size: 0.7rem;
+	font-weight: 600;
+	padding: 10px 0;
 	color: var(--text-dim);
-	transition: color 0.3s;
+	transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
 }
 
 .segmented-option.active {
-	color: var(--text);
+	color: #000;
 }
 
 .segmented-slider {
 	position: absolute;
-	top: 2px;
-	bottom: 2px;
-	background: rgba(255, 255, 255, 0.1);
-	border-radius: 6px;
-	transition:
-		left 0.3s,
-		width 0.3s;
+	top: 3px;
+	bottom: 3px;
+	background: #ffffff;
+	border-radius: 9px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Intro Overlay */
