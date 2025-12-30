@@ -40,7 +40,7 @@ Re-adjusting to the rigid structure, recurring meetings, and mental tempo of an 
 - **Adaptive Variable Typography**: Living text transitions utilizing the full Inter Variable axis.
 - **Horological Precision**: Synchronized timers and a high-precision progress line.
 - **Handheld Ergonomics**: All tertiary controls optimized for the "Thumb Zone".
-- **Advanced PWA**: Edge-to-edge immersion with dynamic system level theme-color syncing.
+- **Advanced PWA**: Edge-to-edge immersion with dynamic system-level theme-color syncing.
 
 ## 🚀 Getting Started
 
