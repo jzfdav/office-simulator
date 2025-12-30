@@ -8,7 +8,7 @@
     <img src="https://github.com/jzfdav/office-simulator/actions/workflows/test.yml/badge.svg" alt="Playwright Tests">
   </a>
   <a href="https://github.com/jzfdav/office-simulator/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/jzfdav/office-simulator?style=flat-square&color=orange" alt="License MIT">
+    <img src="https://img.shields.io/github/license/jzfdav/office-simulator?style=flat-square" alt="License MIT">
   </a>
 </p>
 
@@ -57,4 +57,4 @@ npx playwright test
 
 ---
 
-*Build by [JZFDAV](https://github.com/jzfdav)*
+*Built by [JZFDAV](https://github.com/jzfdav)*
