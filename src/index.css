@@ -55,7 +55,7 @@ html {
 	width: 100vmax;
 	height: 100vmax;
 	filter: blur(80px);
-	opacity: 0.15;
+	opacity: 0.25;
 	border-radius: 50%;
 	pointer-events: none;
 }
@@ -75,7 +75,7 @@ html {
 	left: 20%;
 	width: 60vmax;
 	height: 60vmax;
-	opacity: 0.1;
+	opacity: 0.15;
 }
 
 .bg-overlay {
