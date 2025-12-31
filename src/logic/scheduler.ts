@@ -32,45 +32,51 @@ const PATTERNS: Record<number, string> = {
  * Returns the schedule for a given date and user settings.
  */
 export function getSchedule(date: Date, settings: Settings): Activity {
-	const day = date.getDay();
+	const { workdayStart: start, workdayEnd: end } = settings;
+	if (start === end) return OFF_HOURS;
+
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const totalMinutes = hours * 60 + minutes;
 
-	// 1. Weekend Check
-	if (day === 0 || day === 6) return OFF_HOURS;
-
-	// 2. Workday Window Check
-	const { workdayStart: start, workdayEnd: end } = settings;
-	if (start === end) return OFF_HOURS;
-
+	// Shift bounds
 	const startMins = start * 60;
-	const endMins = (end < start ? end + 24 : end) * 60; // Absolute end in minutes from day start
+	const isOvernight = end < start;
+	const endMins = (isOvernight ? end + 24 : end) * 60;
 
-	// Normalize current time relative to window start
-	const normalizedCurrent =
-		totalMinutes < startMins ? totalMinutes + 1440 : totalMinutes;
+	// Check if a given time is within a shift starting on a specific day
+	const getBlockInShift = (targetDate: Date, targetMins: number) => {
+		const day = targetDate.getDay();
+		const pattern = PATTERNS[day];
+		if (!pattern) return null;
 
-	if (normalizedCurrent < startMins || normalizedCurrent >= endMins) {
+		const blocks = getBlocksForPattern(pattern, startMins, endMins);
+		return blocks.find((b) => targetMins >= b.start && targetMins < b.end);
+	};
+
+	// 1. Try if we are in a shift that started TODAY
+	let currentBlock = getBlockInShift(date, totalMinutes);
+
+	// 2. If not, and we are in the early morning, try if we are in a shift that started YESTERDAY
+	if (!currentBlock && totalMinutes < 1440) {
+		const yesterday = new Date(date);
+		yesterday.setDate(yesterday.getDate() - 1);
+		// If yesterday's shift was overnight, we might still be in it
+		if (isOvernight) {
+			currentBlock = getBlockInShift(yesterday, totalMinutes + 1440);
+		}
+	}
+
+	if (!currentBlock) {
 		return OFF_HOURS;
 	}
 
-	// 3. Define Blocks based on pattern
-	const pattern = PATTERNS[day] || "NORMAL";
-	const blocks = getBlocksForPattern(pattern, startMins, endMins);
-
-	// 4. Find current block
-	const currentBlock = blocks.find(
-		(b) => normalizedCurrent >= b.start && normalizedCurrent < b.end,
-	);
-
-	if (!currentBlock) {
-		return { label: "Focus", context: "General Work", progress: 1 };
-	}
-
 	const blockDuration = currentBlock.end - currentBlock.start;
-	const blockElapsed = normalizedCurrent - currentBlock.start;
-	const progress = blockElapsed / blockDuration;
+	// Simplified progress calculation using the absolute time relative to block start
+	const blockElapsed =
+		(currentBlock.start >= 1440 ? totalMinutes + 1440 : totalMinutes) -
+		currentBlock.start;
+	const progress = Math.max(0, Math.min(1, blockElapsed / blockDuration));
 
 	return {
 		label: currentBlock.label,

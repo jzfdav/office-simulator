@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { type Settings, SettingsStore } from "../store/settings";
 import SegmentedControl from "./SegmentedControl";
 import WheelPicker from "./WheelPicker";
@@ -21,6 +21,15 @@ export default function SettingsModal({
 	const [start, setStart] = useState(currentSettings.workdayStart);
 	const [end, setEnd] = useState(currentSettings.workdayEnd);
 	const [format, setFormat] = useState(currentSettings.timeFormat);
+
+	// Reset local state when modal opens to ensure we start from saved values
+	useEffect(() => {
+		if (isOpen) {
+			setStart(currentSettings.workdayStart);
+			setEnd(currentSettings.workdayEnd);
+			setFormat(currentSettings.timeFormat);
+		}
+	}, [isOpen, currentSettings]);
 
 	const handleSave = () => {
 		const updated = SettingsStore.save({
