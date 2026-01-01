@@ -26,7 +26,7 @@ export default function App() {
 
 	// Update title
 	useEffect(() => {
-		document.title = `${schedule.label} - WorkRhythm`;
+		document.title = `${schedule.label} - Work Rhythm`;
 	}, [schedule.label]);
 
 	// Update theme-color for PWA status bar

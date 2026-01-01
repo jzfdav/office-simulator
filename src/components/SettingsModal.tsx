@@ -238,7 +238,7 @@ export default function SettingsModal({
 						</div>
 
 						<div className="credits-footer">
-							<p className="credits-text">WORKRHYTHM</p>
+							<p className="credits-text">Work Rhythm</p>
 							<p className="credits-text">
 								v
 								{new Date(__BUILD_TIME__)

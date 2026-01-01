@@ -1,4 +1,4 @@
-# WorkRhythm
+# Work Rhythm
 
 
 <p align="left">
@@ -28,7 +28,7 @@ A calm, passive, clock-like PWA built to help professionals transition back into
 
 **This is not a game.**
 
-WorkRhythm is a **re-entry companion** for professionals returning to the workplace after a long leave of absence—whether it’s a vacation, parental leave, recovery, or a career break.
+Work Rhythm is a **re-entry companion** for professionals returning to the workplace after a long leave of absence—whether it’s a vacation, parental leave, recovery, or a career break.
 
 Re-adjusting to the rigid structure, recurring meetings, and mental tempo of a workday can be a jarring experience. This app bridges that gap by providing a **low-stakes, simulated workplace environment** that helps re-calibrate your internal clock.
 

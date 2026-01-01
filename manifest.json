@@ -1,6 +1,6 @@
 {
-	"name": "WorkRhythm",
-	"short_name": "WorkRhythm",
+	"name": "Work Rhythm",
+	"short_name": "Work Rhythm",
 	"start_url": "./index.html",
 	"display": "standalone",
 	"background_color": "#121212",

@@ -19,7 +19,7 @@ export default function IntroOverlay({ onDismiss }: Props) {
 						marginBottom: "0.5rem",
 					}}
 				>
-					WORKRHYTHM
+					Work Rhythm
 				</p>
 				<p>A re-entry companion.</p>
 				<p style={{ fontSize: "1.1rem", opacity: 0.7 }}>

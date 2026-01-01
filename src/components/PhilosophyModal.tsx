@@ -43,7 +43,7 @@ export default function PhilosophyModal({ isOpen, onClose }: Props) {
 							}}
 						>
 							<p>
-								<strong>WorkRhythm</strong> is a re-entry companion, not a
+								<strong>Work Rhythm</strong> is a re-entry companion, not a
 								productivity tool.
 							</p>
 

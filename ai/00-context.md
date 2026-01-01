@@ -1,4 +1,4 @@
-# WorkRhythm PWA — Philosophy & Design Intent
+# Work Rhythm PWA — Philosophy & Design Intent
 
 ## Purpose
 
