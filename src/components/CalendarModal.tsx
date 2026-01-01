@@ -9,6 +9,7 @@ import {
 } from "../logic/scheduler";
 import { useCurrentTime } from "../logic/useCurrentTime";
 import type { Settings } from "../store/settings";
+import InfoTip from "./InfoTip";
 
 interface Props {
 	isOpen: boolean;
@@ -78,7 +79,19 @@ export default function CalendarModal({ isOpen, onClose, settings }: Props) {
 						</div>
 
 						<div className="flavor-banner">
-							<span className="flavor-label">Today's dynamic:</span>
+							<div
+								style={{
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+									marginBottom: "0.5rem",
+								}}
+							>
+								<span className="flavor-label" style={{ marginBottom: 0 }}>
+									Today's dynamic:
+								</span>
+								<InfoTip text="Every day has a unique rhythm (Meeting Heavy, Focus Heavy, Balanced). This is strictly time-based and requires no action." />
+							</div>
 							<span className="flavor-value">
 								{FLAVOR_DESCRIPTIONS[flavor]}
 							</span>

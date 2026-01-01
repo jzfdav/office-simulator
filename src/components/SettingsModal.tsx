@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Check, Download, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { type Settings, SettingsStore } from "../store/settings";
+import InfoTip from "./InfoTip";
 import SegmentedControl from "./SegmentedControl";
 import WheelPicker from "./WheelPicker";
 
@@ -107,7 +108,7 @@ export default function SettingsModal({
 								<div style={{ flex: 1, textAlign: "center" }}>
 									<span
 										className="input-label"
-										style={{ marginBottom: "1rem", display: "block" }}
+										style={{ marginBottom: "0.5rem", display: "block" }}
 									>
 										Start
 									</span>
@@ -121,7 +122,7 @@ export default function SettingsModal({
 								<div style={{ flex: 1, textAlign: "center" }}>
 									<span
 										className="input-label"
-										style={{ marginBottom: "1rem", display: "block" }}
+										style={{ marginBottom: "0.5rem", display: "block" }}
 									>
 										End
 									</span>
@@ -133,37 +134,40 @@ export default function SettingsModal({
 									/>
 								</div>
 							</div>
-
-							<div style={{ marginTop: "1.5rem" }}>
-								<label
-									className="input-label"
-									style={{ marginBottom: "0.5rem", display: "block" }}
+							<div style={{ marginTop: "1rem" }}>
+								<div
+									style={{
+										display: "flex",
+										alignItems: "center",
+										marginBottom: "0.5rem",
+									}}
 								>
-									Project Name
-									<input
-										type="text"
-										value={projectName}
-										onChange={(e) => setProjectName(e.target.value)}
-										style={{
-											width: "100%",
-											background: "rgba(255,255,255,0.05)",
-											border: "1px solid rgba(255,255,255,0.1)",
-											borderRadius: "8px",
-											padding: "0.8rem",
-											marginTop: "0.5rem",
-											color: "#fff",
-											fontSize: "1rem",
-											outline: "none",
-											display: "block",
-										}}
-										onFocus={(e) => {
-											e.target.style.borderColor = "rgba(255,255,255,0.3)";
-										}}
-										onBlur={(e) => {
-											e.target.style.borderColor = "rgba(255,255,255,0.1)";
-										}}
-									/>
-								</label>
+									<span className="input-label">Project Name</span>
+									<InfoTip text="This grounds the simulation in your reality. It has no functional impact—it's just a label to anchor your focus." />
+								</div>
+								<input
+									type="text"
+									value={projectName}
+									onChange={(e) => setProjectName(e.target.value)}
+									style={{
+										width: "100%",
+										background: "rgba(255,255,255,0.05)",
+										border: "1px solid rgba(255,255,255,0.1)",
+										borderRadius: "8px",
+										padding: "0.8rem",
+										marginTop: "0.5rem",
+										color: "#fff",
+										fontSize: "1rem",
+										outline: "none",
+										display: "block",
+									}}
+									onFocus={(e) => {
+										e.target.style.borderColor = "rgba(255,255,255,0.3)";
+									}}
+									onBlur={(e) => {
+										e.target.style.borderColor = "rgba(255,255,255,0.1)";
+									}}
+								/>
 							</div>
 						</div>
 
