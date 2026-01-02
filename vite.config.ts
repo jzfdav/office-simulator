@@ -10,7 +10,7 @@ export default defineConfig({
 	},
 	test: {
 		environment: "jsdom",
-		exclude: ["**/node_modules/**", "**/dist/**", "**/e2e/**"],
+		exclude: ["**/node_modules/**", "**/dist/**", "**/e2e/**", "tests/**"],
 	},
 	plugins: [
 		react(),
