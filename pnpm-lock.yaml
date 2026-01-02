@@ -66,6 +66,9 @@ importers:
       vitest:
         specifier: ^4.0.16
         version: 4.0.16(@types/node@24.10.4)(jsdom@27.4.0)(terser@5.44.1)(yaml@2.8.2)
+      workbox-window:
+        specifier: ^7.4.0
+        version: 7.4.0
 
 packages:
 
